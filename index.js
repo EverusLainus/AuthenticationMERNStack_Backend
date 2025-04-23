@@ -12,6 +12,8 @@ app.use(cors());
 
 app.use(express.json());
 
+const port = process.env.PORT || 3001;
+
 export const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URI || "", {
@@ -26,7 +28,7 @@ export const connectDB = async () => {
 
 app.use("/auth", authRouter);
 
-app.listen(3001, () => {
+app.listen(port, () => {
   console.log("Server connected");
   connectDB();
 });
